@@ -1,27 +1,18 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Archivo, Inter } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const archivo = Archivo({ variable: "--font-archivo", subsets: ["latin"], weight: ["600", "700", "800", "900"] });
+const inter = Inter({ variable: "--font-inter", subsets: ["latin"] });
 
 export const metadata = {
-  title: 'Elevinar',
-  description: 'Tingkatkan wawasanmu melalui webinar interaktif dan inspiratif dari para ahli terbaik.',
+  title: 'Elevinar — Naikkan Level Skill-mu',
+  description: 'Elevinar: tingkatkan wawasanmu melalui webinar interaktif dan inspiratif dari para ahli terbaik.',
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="id">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${archivo.variable} ${inter.variable} antialiased`}>
         {children}
       </body>
     </html>
