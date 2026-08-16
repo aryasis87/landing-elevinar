@@ -34,7 +34,7 @@ const speakers = [
 
 const Speakers = () => {
   return (
-    <section className="bg-orange-50 py-16 px-4">
+    <section className="bg-stage-2 py-16 px-4">
       <motion.div 
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -45,11 +45,11 @@ const Speakers = () => {
           <motion.h2 
             initial={{ scale: 0.8 }}
             whileInView={{ scale: 1 }}
-            className="text-4xl font-bold text-orange-600 mb-4"
+            className="text-4xl font-bold text-spot mb-4"
           >
             Para Pembicara Inspiratif
           </motion.h2>
-          <p className="text-orange-800 max-w-2xl mx-auto">
+          <p className="text-spot-soft max-w-2xl mx-auto">
             Temui para inovator dan mentor yang akan membangkitkan kreativitas 
             dan semangat anak-anak serta para pelaku startup muda!
           </p>
@@ -69,13 +69,13 @@ const Speakers = () => {
                 scale: 1.05,
                 rotate: 2
               }}
-              className="bg-white rounded-xl shadow-lg p-6 text-center 
-                         hover:border-orange-300 border-2 border-transparent 
+              className="bg-stage-2 rounded-xl shadow-lg p-6 text-center 
+                         hover:border-spot/60 border-2 border-transparent 
                          transition-all duration-300"
             >
               <div className="flex justify-center mb-4">
                 <div className="w-32 h-32 relative rounded-full overflow-hidden 
-                                bg-orange-100 flex items-center justify-center">
+                                bg-spot/12 flex items-center justify-center">
                   {speaker.image ? (
                     <Image 
                       src={speaker.image} 
@@ -87,26 +87,26 @@ const Speakers = () => {
                     />
                   ) : (
                     <UserCircle2Icon 
-                      className="w-24 h-24 text-orange-500" 
+                      className="w-24 h-24 text-spot" 
                       strokeWidth={1}
                     />
                   )}
                 </div>
               </div>
 
-              <h3 className="text-xl font-bold text-orange-700 mb-2">
+              <h3 className="text-xl font-bold text-spot mb-2">
                 {speaker.name}
               </h3>
-              <p className="text-orange-600 mb-3 italic">
+              <p className="text-spot mb-3 italic">
                 {speaker.title}
               </p>
-              <p className="text-orange-800 mb-4">{speaker.bio}</p>
+              <p className="text-spot-soft mb-4">{speaker.bio}</p>
 
               <div className="flex flex-wrap justify-center gap-2 mb-4">
                 {speaker.expertise.map((skill) => (
                   <span 
                     key={skill}
-                    className="bg-orange-100 text-orange-700 
+                    className="bg-spot/12 text-spot 
                                px-3 py-1 rounded-full text-xs"
                   >
                     {skill}
@@ -122,9 +122,9 @@ const Speakers = () => {
           whileInView={{ opacity: 1 }}
           className="text-center mt-12"
         >
-          <div className="inline-flex items-center bg-orange-100 
-                          rounded-full px-6 py-3 text-orange-800">
-            <LightbulbIcon className="mr-2 text-orange-600" />
+          <div className="inline-flex items-center bg-spot/12 
+                          rounded-full px-6 py-3 text-spot-soft">
+            <LightbulbIcon className="mr-2 text-spot" />
             Bergabunglah untuk inspirasi dan kolaborasi!
           </div>
         </motion.div>

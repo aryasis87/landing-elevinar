@@ -20,7 +20,7 @@ const audienceData = [
       "Siap menghadapi tantangan global"
     ],
     color: "bg-gradient-to-br from-blue-500 to-purple-600",
-    icon: <CodeIcon className="w-16 h-16 text-white" />
+    icon: <CodeIcon className="w-16 h-16 text-chalk" />
   },
   {
     id: 2,
@@ -32,8 +32,8 @@ const audienceData = [
       "Berani mengambil risiko",
       "Memiliki passionate terhadap inovasi"
     ],
-    color: "bg-gradient-to-br from-orange-500 to-red-600",
-    icon: <ZapIcon className="w-16 h-16 text-white" />
+    color: "bg-gradient-to-br from-spot to-curtain",
+    icon: <ZapIcon className="w-16 h-16 text-chalk" />
   },
   {
     id: 3,
@@ -45,8 +45,8 @@ const audienceData = [
       "Terbuka terhadap ide baru",
       "Membangun jaringan berkelanjutan"
     ],
-    color: "bg-gradient-to-br from-green-500 to-teal-600",
-    icon: <HeartIcon className="w-16 h-16 text-white" />
+    color: "bg-gradient-to-br from-green-500 to-spot-soft",
+    icon: <HeartIcon className="w-16 h-16 text-chalk" />
   }
 ];
 
@@ -54,7 +54,7 @@ const TargetAudience = () => {
   const [activeAudience, setActiveAudience] = useState(null);
 
   return (
-    <section className="bg-white py-16 px-4">
+    <section className="bg-stage-2 py-16 px-4">
       <motion.div 
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -63,10 +63,10 @@ const TargetAudience = () => {
         className="container mx-auto"
       >
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-extrabold text-gray-800 mb-4">
+          <h2 className="text-4xl font-extrabold text-chalk mb-4">
             Siapa Mereka?
           </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <p className="text-dust max-w-2xl mx-auto">
             Mengenal lebih dekat para talenta muda yang akan membentuk masa depan digital
           </p>
         </div>
@@ -89,11 +89,11 @@ const TargetAudience = () => {
             >
               <div className={`absolute inset-0 ${audience.color} opacity-80`}></div>
               
-              <div className="relative z-10 p-8 text-white">
+              <div className="relative z-10 p-8 text-chalk">
                 <div className="flex justify-between items-center mb-6">
                   {audience.icon}
-                  <div className="bg-white/20 rounded-full p-3">
-                    <UsersIcon className="w-6 h-6 text-white" />
+                  <div className="bg-stage-2/20 rounded-full p-3">
+                    <UsersIcon className="w-6 h-6 text-chalk" />
                   </div>
                 </div>
 
@@ -108,7 +108,7 @@ const TargetAudience = () => {
                       key={index} 
                       className="flex items-center space-x-2"
                     >
-                      <div className="w-2 h-2 bg-white rounded-full"></div>
+                      <div className="w-2 h-2 bg-stage-2 rounded-full"></div>
                       <span className="text-sm">{char}</span>
                     </div>
                   ))}

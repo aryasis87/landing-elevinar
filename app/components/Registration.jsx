@@ -58,21 +58,21 @@ const Registration = () => {
       <motion.div 
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="min-h-screen bg-orange-50 flex items-center justify-center p-4"
+        className="min-h-screen bg-stage-2 flex items-center justify-center p-4"
       >
-        <div className="bg-white rounded-2xl shadow-xl p-12 text-center max-w-md w-full">
-          <CheckCircle2Icon className="w-24 h-24 text-green-500 mx-auto mb-6" />
-          <h2 className="text-3xl font-bold text-orange-600 mb-4">
+        <div className="bg-stage-2 rounded-2xl shadow-xl p-12 text-center max-w-md w-full">
+          <CheckCircle2Icon className="w-24 h-24 text-spot mx-auto mb-6" />
+          <h2 className="text-3xl font-bold text-spot mb-4">
             Pendaftaran Berhasil!
           </h2>
-          <p className="text-orange-800 mb-6">
+          <p className="text-spot-soft mb-6">
             Terima kasih telah mendaftar. Kami akan segera mengirimkan 
             detail webinar ke email Anda.
           </p>
           <button 
             onClick={() => setSubmitted(false)}
-            className="w-full bg-orange-500 text-white py-3 rounded-full 
-                       hover:bg-orange-600 transition-colors"
+            className="w-full bg-spot text-chalk py-3 rounded-full 
+                       hover:bg-spot transition-colors"
           >
             Kembali ke Formulir
           </button>
@@ -82,19 +82,19 @@ const Registration = () => {
   }
 
   return (
-    <section className="bg-orange-50 min-h-screen flex items-center justify-center py-16 px-4">
+    <section className="bg-stage-2 min-h-screen flex items-center justify-center py-16 px-4">
       <motion.div 
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="bg-white rounded-2xl shadow-xl w-full max-w-2xl p-10"
+        className="bg-stage-2 rounded-2xl shadow-xl w-full max-w-2xl p-10"
       >
         <div className="text-center mb-10">
-          <h2 className="text-4xl font-bold text-orange-600 mb-4">
+          <h2 className="text-4xl font-bold text-spot mb-4">
             Daftar Webinar
           </h2>
-          <p className="text-orange-800 max-w-xl mx-auto">
+          <p className="text-spot-soft max-w-xl mx-auto">
             Lengkapi formulir di bawah ini untuk bergabung dalam perjalanan 
             transformasi digital Anda
           </p>
@@ -103,11 +103,11 @@ const Registration = () => {
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="grid md:grid-cols-2 gap-6">
             <div>
-              <label className="block text-orange-700 mb-2">
+              <label className="block text-spot mb-2">
                 Nama Lengkap
               </label>
               <div className="relative">
-                <UserIcon className="absolute left-3 top-1/2 -translate-y-1/2 text-orange-500" />
+                <UserIcon className="absolute left-3 top-1/2 -translate-y-1/2 text-spot" />
                 <input 
                   type="text" 
                   name="name"
@@ -116,18 +116,18 @@ const Registration = () => {
                   required
                   placeholder="Masukkan nama Anda"
                   className="text-black w-full pl-10 pr-4 py-3 rounded-full 
-                             border border-orange-200 focus:border-orange-500 
+                             border border-chalk/12 focus:border-spot 
                              focus:ring focus:ring-orange-200"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-orange-700 mb-2">
+              <label className="block text-spot mb-2">
                 Email
               </label>
               <div className="relative">
-                <MailIcon className="absolute left-3 top-1/2 -translate-y-1/2 text-orange-500" />
+                <MailIcon className="absolute left-3 top-1/2 -translate-y-1/2 text-spot" />
                 <input 
                   type="email" 
                   name="email"
@@ -136,7 +136,7 @@ const Registration = () => {
                   required
                   placeholder="email@example.com"
                   className="text-black w-full pl-10 pr-4 py-3 rounded-full 
-                             border border-orange-200 focus:border-orange-500 
+                             border border-chalk/12 focus:border-spot 
                              focus:ring focus:ring-orange-200"
                 />
               </div>
@@ -144,11 +144,11 @@ const Registration = () => {
           </div>
 
           <div>
-            <label className="block text-orange-700 mb-2">
+            <label className="block text-spot mb-2">
               Nomor Telepon
             </label>
             <div className="relative">
-              <PhoneIcon className="absolute left-3 top-1/2 -translate-y-1/2 text-orange-500" />
+              <PhoneIcon className="absolute left-3 top-1/2 -translate-y-1/2 text-spot" />
               <input 
                 type="tel" 
                 name="phone"
@@ -157,14 +157,14 @@ const Registration = () => {
                 required
                 placeholder="Nomor telepon aktif"
                 className="text-black w-full pl-10 pr-4 py-3 rounded-full 
-                           border border-orange-200 focus:border-orange-500 
+                           border border-chalk/12 focus:border-spot 
                            focus:ring focus:ring-orange-200"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-orange-700 mb-2">
+            <label className="block text-spot mb-2">
               Kategori Peserta
             </label>
             <select 
@@ -173,7 +173,7 @@ const Registration = () => {
               onChange={handleChange}
               required
               className="text-black w-full px-4 py-3 rounded-full 
-                         border border-orange-200 focus:border-orange-500 
+                         border border-chalk/12 focus:border-spot 
                          focus:ring focus:ring-orange-200"
             >
               <option value="">Pilih Kategori</option>
@@ -185,7 +185,7 @@ const Registration = () => {
           </div>
 
           <div>
-            <label className="block text-orange-700 mb-2">
+            <label className="block text-spot mb-2">
               Minat Bidang
             </label>
             <div className="flex flex-wrap gap-3">
@@ -196,8 +196,8 @@ const Registration = () => {
                   onClick={() => handleInterestToggle(interest)}
                   className={`px-4 py-2 rounded-full text-sm transition-all 
                               ${formData.interests.includes(interest)
-                                ? 'bg-orange-500 text-white'
-                                : 'bg-orange-100 text-orange-700'}`}
+                                ? 'bg-spot text-chalk'
+                                : 'bg-spot/12 text-spot'}`}
                 >
                   {interest}
                 </button>
@@ -209,8 +209,8 @@ const Registration = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             type="submit"
-            className="w-full bg-orange-500 text-white py-3 rounded-full 
-                       hover:bg-orange-600 transition-all duration-300"
+            className="w-full bg-spot text-chalk py-3 rounded-full 
+                       hover:bg-spot transition-all duration-300"
           >
             Daftar Sekarang
           </motion.button>

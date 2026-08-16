@@ -1,75 +1,99 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ==========================================================================
+   Elevinar — bahasa rupa PANGGUNG.
+   Webinar diperlakukan sebagai pertunjukan: ruang gelap, satu kerucut lampu
+   sorot, dan penonton yang punya tempat duduk. Semua keputusan rupa mengikuti
+   logika itu — terang hanya di tempat yang sedang jadi pusat perhatian.
+   ========================================================================== */
+
+@theme {
+  --color-stage: #0b0a0d; /* gelap panggung, dasar halaman */
+  --color-stage-2: #16141a; /* bidang terangkat */
+  --color-spot: #f5b942; /* lampu sorot — aksen utama */
+  --color-spot-soft: #f7d089;
+  --color-curtain: #7c1d2e; /* merah tirai */
+  --color-chalk: #f2eff2; /* teks utama */
+  --color-dust: #8f8892; /* teks sekunder */
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer base {
+  body {
+    font-family: var(--font-inter), system-ui, sans-serif;
+    background-color: var(--color-stage);
+    color: var(--color-dust);
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-archivo), system-ui, sans-serif;
+    letter-spacing: -0.03em;
+    color: var(--color-chalk);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-inter), system-ui, sans-serif;
+/* --------------------------------------------------------------------------
+   1. Label panggung — kapital renggang, seperti papan nama acara
+   -------------------------------------------------------------------------- */
+.cue {
+  font-family: var(--font-archivo), system-ui, sans-serif;
+  font-size: 0.6875rem;
+  line-height: 1.3;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 700;
 }
 
-h1, h2, h3 { font-family: var(--font-archivo), system-ui, sans-serif; letter-spacing: -0.03em; }
+/* --------------------------------------------------------------------------
+   2. Kerucut lampu sorot — motif inti varian ini
+   -------------------------------------------------------------------------- */
+.spotlight {
+  background: radial-gradient(
+    58% 70% at 50% 0%,
+    rgb(245 185 66 / 0.20),
+    rgb(245 185 66 / 0.06) 45%,
+    transparent 72%
+  );
+}
 
-@keyframes blob {
-  0% {
-    transform: translate(0px, 0px) scale(1);
-  }
-  33% {
-    transform: translate(30px, -50px) scale(1.1);
-  }
-  66% {
-    transform: translate(-20px, 20px) scale(0.9);
-  }
-  100% {
-    transform: translate(0px, 0px) scale(1);
+.spotlight-soft {
+  background: radial-gradient(50% 60% at 50% 50%, rgb(245 185 66 / 0.10), transparent 70%);
+}
+
+/* --------------------------------------------------------------------------
+   3. Lantai papan — garis lantai panggung yang menjauh
+   -------------------------------------------------------------------------- */
+.stage-floor {
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgb(242 239 242 / 0.05) 0 1px,
+    transparent 1px 42px
+  );
+}
+
+/* --------------------------------------------------------------------------
+   4. Tepi tirai — garis atas berwarna merah tirai
+   -------------------------------------------------------------------------- */
+.curtain-top {
+  border-top: 3px solid var(--color-curtain);
+}
+
+/* --------------------------------------------------------------------------
+   5. Aksesibilitas
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 
-@keyframes float {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
-}
-
-.animate-blob {
-  animation: blob 7s infinite;
-}
-
-.animation-delay-2000 {
-  animation-delay: 2s;
-}
-
-.animation-delay-3000 {
-  animation-delay: 3s;
-}
-
-.animation-delay-4000 {
-  animation-delay: 4s;
-}
-
-.animate-float {
-  animation: float 6s ease-in-out infinite;
+:where(a, button, input, textarea, select, summary):focus-visible {
+  outline: 2px solid var(--color-spot);
+  outline-offset: 3px;
 }

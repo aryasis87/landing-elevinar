@@ -1,4 +1,5 @@
 import { Archivo, Inter } from "next/font/google";
+import MotionProvider from "./components/MotionProvider";
 import "./globals.css";
 
 const archivo = Archivo({ variable: "--font-archivo", subsets: ["latin"], weight: ["600", "700", "800", "900"] });
@@ -42,7 +43,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="id">
       <body className={`${archivo.variable} ${inter.variable} antialiased`}>
-        {children}
+        <MotionProvider>{children}</MotionProvider>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(__jsonld) }} />
         </body>
     </html>

@@ -60,7 +60,7 @@ const FAQ = () => {
   };
 
   return (
-    <section className="bg-orange-50 py-16 px-4">
+    <section className="bg-stage-2 py-16 px-4">
       <motion.div 
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -74,11 +74,11 @@ const FAQ = () => {
             whileInView={{ scale: 1 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-4xl font-bold text-orange-600 mb-4"
+            className="text-4xl font-bold text-spot mb-4"
           >
             Pertanyaan yang Sering Diajukan
           </motion.h2>
-          <p className="text-orange-800 max-w-2xl mx-auto">
+          <p className="text-spot-soft max-w-2xl mx-auto">
             Temukan jawaban untuk pertanyaan umum seputar webinar kami
           </p>
         </div>
@@ -91,8 +91,8 @@ const FAQ = () => {
               onClick={() => setActiveCategory(category.category)}
               className={`px-6 py-2 rounded-full transition-all duration-300 
                           ${activeCategory === category.category 
-                            ? 'bg-orange-600 text-white' 
-                            : 'bg-orange-100 text-orange-700'}`}
+                            ? 'bg-spot text-chalk' 
+                            : 'bg-spot/12 text-spot'}`}
             >
               {category.category}
             </button>
@@ -113,17 +113,17 @@ const FAQ = () => {
               >
                 <div 
                   onClick={() => toggleQuestion(activeCategory, index)}
-                  className="bg-white rounded-lg mb-4 shadow-md cursor-pointer"
+                  className="bg-stage-2 rounded-lg mb-4 shadow-md cursor-pointer"
                 >
                   <div className="flex justify-between items-center p-5">
                     <div className="flex items-center space-x-3">
-                      <HelpCircleIcon className="w-6 h-6 text-orange-600" />
-                      <h3 className="text-lg font-semibold text-orange-800">
+                      <HelpCircleIcon className="w-6 h-6 text-spot" />
+                      <h3 className="text-lg font-semibold text-spot-soft">
                         {faq.question}
                       </h3>
                     </div>
                     <ChevronDownIcon 
-                      className={`w-6 h-6 text-orange-600 transition-transform 
+                      className={`w-6 h-6 text-spot transition-transform 
                                   ${openQuestions[`${activeCategory}-${index}`] 
                                     ? 'rotate-180' : ''}`} 
                     />
@@ -138,7 +138,7 @@ const FAQ = () => {
                         transition={{ duration: 0.3 }}
                         className="overflow-hidden"
                       >
-                        <div className="p-5 pt-0 text-orange-700">
+                        <div className="p-5 pt-0 text-spot">
                           {faq.answer}
                         </div>
                       </motion.div>
