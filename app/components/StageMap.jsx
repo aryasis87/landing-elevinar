@@ -96,7 +96,7 @@ export default function StageMap() {
                   </span>
                   <h3 className="text-lg font-extrabold text-chalk">{b.nama}</h3>
                 </div>
-                <p className="cue mt-3 text-dust/60">{b.kursi} kursi</p>
+                <p className="cue mt-3 text-dust">{b.kursi} kursi</p>
 
                 {/* Deretan kursi kecil sebagai penanda kepadatan */}
                 <div aria-hidden="true" className="mt-4 flex flex-wrap gap-1">
@@ -112,7 +112,7 @@ export default function StageMap() {
 
               <ul className="space-y-2.5">
                 {b.dapat.map((d) => (
-                  <li key={d} className="flex gap-3 text-sm leading-relaxed text-chalk/85">
+                  <li key={d} className="flex gap-3 text-sm leading-relaxed text-chalk/90">
                     <span aria-hidden="true" className="mt-2 h-1 w-3 shrink-0 bg-spot" />
                     {d}
                   </li>
@@ -132,7 +132,7 @@ export default function StageMap() {
           ))}
         </div>
 
-        <p className="cue mt-8 text-center leading-[1.7] text-dust/45">
+        <p className="cue mt-8 text-center leading-[1.7] text-dust">
           Harga dan jumlah kursi di atas adalah contoh untuk keperluan purwarupa desain.
         </p>
       </div>

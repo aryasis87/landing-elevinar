@@ -12,6 +12,7 @@
   --color-stage-2: #16141a; /* bidang terangkat */
   --color-spot: #f5b942; /* lampu sorot — aksen utama */
   --color-spot-soft: #f7d089;
+  --color-spot-deep: #7a5304; /* untuk TEKS di atas tint sorot */
   --color-curtain: #7c1d2e; /* merah tirai */
   --color-chalk: #f2eff2; /* teks utama */
   --color-dust: #8f8892; /* teks sekunder */

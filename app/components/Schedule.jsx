@@ -94,7 +94,7 @@ const Schedule = () => {
               className={`px-6 py-2 rounded-full transition-all duration-300 
                           flex items-center space-x-2 
                           ${activeDate === index 
-                            ? 'bg-spot text-chalk' 
+                            ? 'bg-spot text-stage' 
                             : 'bg-spot/12 text-spot'}`}
             >
               <CalendarIcon className="w-5 h-5" />

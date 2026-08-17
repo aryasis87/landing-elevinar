@@ -73,7 +73,7 @@ export default function Hero() {
               <dt className="sr-only">{ket}</dt>
               <dd>
                 <span className="block text-2xl font-extrabold text-chalk">{nilai}</span>
-                <span className="cue mt-2.5 block text-dust/60">{ket}</span>
+                <span className="cue mt-2.5 block text-dust">{ket}</span>
               </dd>
             </div>
           ))}

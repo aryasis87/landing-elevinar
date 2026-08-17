@@ -196,7 +196,7 @@ const Registration = () => {
                   onClick={() => handleInterestToggle(interest)}
                   className={`px-4 py-2 rounded-full text-sm transition-all 
                               ${formData.interests.includes(interest)
-                                ? 'bg-spot text-chalk'
+                                ? 'bg-spot text-stage'
                                 : 'bg-spot/12 text-spot'}`}
                 >
                   {interest}

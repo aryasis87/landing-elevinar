@@ -91,7 +91,7 @@ const FAQ = () => {
               onClick={() => setActiveCategory(category.category)}
               className={`px-6 py-2 rounded-full transition-all duration-300 
                           ${activeCategory === category.category 
-                            ? 'bg-spot text-chalk' 
+                            ? 'bg-spot text-stage' 
                             : 'bg-spot/12 text-spot'}`}
             >
               {category.category}
