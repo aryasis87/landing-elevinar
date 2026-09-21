@@ -5,10 +5,10 @@ import "./globals.css";
 const archivo = Archivo({ variable: "--font-archivo", subsets: ["latin"], weight: ["600", "700", "800", "900"] });
 const inter = Inter({ variable: "--font-inter", subsets: ["latin"] });
 
-const __jsonld = {"@context":"https://schema.org","@type":"WebSite","name":"Elevinar","description":"Platform webinar interaktif","url":"https://elevinar.pintuweb.com","inLanguage":"id"};
+const __jsonld = {"@context":"https://schema.org","@type":"WebSite","name":"Elevinar","description":"Platform webinar interaktif","url":"https://landing-elevinar.vercel.app","inLanguage":"id"};
 
 export const metadata = {
-  metadataBase: new URL("https://elevinar.pintuweb.com"),
+  metadataBase: new URL("https://landing-elevinar.vercel.app"),
   title: "Elevinar — Naikkan Level Skill-mu",
   description: "Elevinar: tingkatkan wawasanmu melalui webinar interaktif dan inspiratif dari para ahli terbaik.",
   applicationName: "Elevinar",
@@ -16,11 +16,11 @@ export const metadata = {
   authors: [{ name: "Elevinar" }],
   creator: "Elevinar",
   publisher: "Elevinar",
-  alternates: { canonical: "https://elevinar.pintuweb.com" },
+  alternates: { canonical: "https://landing-elevinar.vercel.app" },
   openGraph: {
     type: "website",
     locale: "id_ID",
-    url: "https://elevinar.pintuweb.com",
+    url: "https://landing-elevinar.vercel.app",
     siteName: "Elevinar",
     title: "Elevinar — Naikkan Level Skill-mu",
     description: "Elevinar: tingkatkan wawasanmu melalui webinar interaktif dan inspiratif dari para ahli terbaik.",
