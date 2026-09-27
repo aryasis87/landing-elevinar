@@ -48,8 +48,7 @@ const Registration = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Simulasi submit (ganti dengan logic aktual)
-    console.log(formData);
+    // Halaman contoh: data tidak dikirim ke mana pun (lihat pesan sukses).
     setSubmitted(true);
   };
 
@@ -63,11 +62,11 @@ const Registration = () => {
         <div className="bg-stage-2 rounded-2xl shadow-xl p-12 text-center max-w-md w-full">
           <CheckCircle2Icon className="w-24 h-24 text-spot mx-auto mb-6" />
           <h2 className="text-3xl font-bold text-spot mb-4">
-            Pendaftaran Berhasil!
+            Terima kasih!
           </h2>
           <p className="text-spot-soft mb-6">
-            Terima kasih telah mendaftar. Kami akan segera mengirimkan 
-            detail webinar ke email Anda.
+            Ini halaman contoh, jadi pendaftaran Anda tidak diproses dan tidak ada
+            email yang dikirim.
           </p>
           <button 
             onClick={() => setSubmitted(false)}
