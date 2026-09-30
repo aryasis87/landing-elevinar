@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { BARISAN } from '@/lib/acara';
 
 /* ============================================================================
    Bagian penanda Elevinar: DENAH PANGGUNG.
@@ -9,40 +10,11 @@ import { motion } from 'framer-motion';
    terhadap jarak Anda dengan pembicara.
    ========================================================================== */
 
-const baris = [
-  {
-    kode: 'A',
-    nama: 'Barisan Depan',
-    kursi: 40,
-    harga: 'Rp 450.000',
-    dapat: [
-      'Nama Anda disebut lebih dulu saat sesi tanya jawab',
-      'Ruang diskusi kecil 30 menit bersama pembicara',
-      'Rekaman + materi mentah',
-    ],
-    terang: 1,
-  },
-  {
-    kode: 'B',
-    nama: 'Barisan Tengah',
-    kursi: 120,
-    harga: 'Rp 250.000',
-    dapat: ['Boleh bertanya lewat mikrofon', 'Rekaman + materi', 'Sertifikat kehadiran'],
-    terang: 0.62,
-  },
-  {
-    kode: 'C',
-    nama: 'Barisan Belakang',
-    kursi: 140,
-    harga: 'Rp 95.000',
-    dapat: ['Bertanya lewat kolom obrolan', 'Rekaman selama 30 hari'],
-    terang: 0.34,
-  },
-];
+const baris = BARISAN;
 
 export default function StageMap() {
   return (
-    <section id="panggung" className="relative overflow-hidden bg-stage py-20 md:py-28">
+    <section id="panggung" className="relative scroll-mt-16 overflow-hidden bg-stage py-20 md:py-28">
       <div aria-hidden="true" className="spotlight-soft absolute inset-x-0 top-0 h-96" />
 
       <div className="relative z-10 mx-auto max-w-6xl px-6">
@@ -122,7 +94,7 @@ export default function StageMap() {
               <div className="flex items-center justify-between gap-6 border-t border-chalk/12 pt-5 lg:flex-col lg:items-end lg:border-t-0 lg:pt-0">
                 <span className="text-xl font-extrabold text-chalk">{b.harga}</span>
                 <a
-                  href="#daftar"
+                  href={`/?kursi=${b.kode}#daftar`}
                   className="cue border-b border-spot/50 pb-1 text-spot transition-colors hover:border-spot"
                 >
                   Ambil kursi {b.kode}

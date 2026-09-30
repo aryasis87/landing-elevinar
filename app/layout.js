@@ -1,16 +1,18 @@
 import { Archivo, Inter } from "next/font/google";
 import MotionProvider from "./components/MotionProvider";
+import SiteHeader from "./components/SiteHeader";
+import SiteFooter from "./components/SiteFooter";
 import "./globals.css";
 
 const archivo = Archivo({ variable: "--font-archivo", subsets: ["latin"], weight: ["600", "700", "800", "900"] });
 const inter = Inter({ variable: "--font-inter", subsets: ["latin"] });
 
-const __jsonld = {"@context":"https://schema.org","@type":"WebSite","name":"Elevinar","description":"Platform webinar interaktif","url":"https://landing-elevinar.vercel.app","inLanguage":"id"};
+const __jsonld = {"@context":"https://schema.org","@type":"WebSite","name":"Elevinar","description":"Webinar yang dijalankan seperti pertunjukan","url":"https://landing-elevinar.vercel.app","inLanguage":"id"};
 
 export const metadata = {
   metadataBase: new URL("https://landing-elevinar.vercel.app"),
-  title: "Elevinar — Naikkan Level Skill-mu",
-  description: "Elevinar: tingkatkan wawasanmu melalui webinar interaktif dan inspiratif dari para ahli terbaik.",
+  title: { default: "Elevinar — Presentasi yang Didengar", template: "%s — Elevinar" },
+  description: "Elevinar menjalankan webinar seperti pertunjukan. Pertunjukan #07 \"Presentasi yang Didengar\": empat babak, 300 kursi, Sabtu 21 November 2026, daring.",
   applicationName: "Elevinar",
   keywords: ["webinar", "kelas online", "pelatihan", "skill", "seminar online"],
   authors: [{ name: "Elevinar" }],
@@ -22,14 +24,14 @@ export const metadata = {
     locale: "id_ID",
     url: "https://landing-elevinar.vercel.app",
     siteName: "Elevinar",
-    title: "Elevinar — Naikkan Level Skill-mu",
-    description: "Elevinar: tingkatkan wawasanmu melalui webinar interaktif dan inspiratif dari para ahli terbaik.",
-    images: [{ url: "/og.jpg", width: 1200, height: 630, alt: "Elevinar — Naikkan Level Skill-mu" }],
+    title: "Elevinar — Presentasi yang Didengar",
+    description: "Elevinar menjalankan webinar seperti pertunjukan. Pertunjukan #07 \"Presentasi yang Didengar\": empat babak, 300 kursi, Sabtu 21 November 2026, daring.",
+    images: [{ url: "/og.jpg", width: 1200, height: 630, alt: "Elevinar — Presentasi yang Didengar" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Elevinar — Naikkan Level Skill-mu",
-    description: "Elevinar: tingkatkan wawasanmu melalui webinar interaktif dan inspiratif dari para ahli terbaik.",
+    title: "Elevinar — Presentasi yang Didengar",
+    description: "Elevinar menjalankan webinar seperti pertunjukan. Pertunjukan #07 \"Presentasi yang Didengar\": empat babak, 300 kursi, Sabtu 21 November 2026, daring.",
     images: ["/og.jpg"],
   },
   robots: {
@@ -43,7 +45,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="id">
       <body className={`${archivo.variable} ${inter.variable} antialiased`}>
-        <MotionProvider>{children}</MotionProvider>
+        <MotionProvider>
+          <a href="#konten" className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:bg-spot focus:px-4 focus:py-2 focus:text-stage">Lompat ke konten</a>
+          <SiteHeader />
+          <div id="konten">{children}</div>
+          <SiteFooter />
+        </MotionProvider>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(__jsonld) }} />
         </body>
     </html>

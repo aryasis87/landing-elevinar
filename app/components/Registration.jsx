@@ -1,222 +1,120 @@
 'use client';
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { 
-  UserIcon, 
-  MailIcon, 
-  PhoneIcon, 
-  BookOpenIcon,
-  CheckCircle2Icon 
-} from 'lucide-react';
 
-const Registration = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    category: '',
-    interests: []
-  });
+import { useEffect, useState } from 'react';
+import { ACARA, BARISAN } from '@/lib/acara';
 
-  const [submitted, setSubmitted] = useState(false);
+/* Formulir kursi. Tautan "Ambil kursi A" di denah panggung membawa ?kursi=A,
+   jadi barisan itu sudah terpilih ketika pengunjung sampai di sini. */
+export default function Registration() {
+  const [kursi, setKursi] = useState('B');
+  const [terkirim, setTerkirim] = useState(null);
 
-  const interestOptions = [
-    "Teknologi Digital",
-    "Kewirausahaan",
-    "Pendidikan Inovatif",
-    "Kreativitas Anak",
-    "Startup",
-    "Pengembangan Skill"
-  ];
+  useEffect(() => {
+    const k = new URLSearchParams(window.location.search).get('kursi');
+    if (k && BARISAN.some((b) => b.kode === k)) setKursi(k);
+  }, []);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
+  const pilih = BARISAN.find((b) => b.kode === kursi);
 
-  const handleInterestToggle = (interest) => {
-    setFormData(prev => ({
-      ...prev,
-      interests: prev.interests.includes(interest)
-        ? prev.interests.filter(i => i !== interest)
-        : [...prev.interests, interest]
-    }));
-  };
-
-  const handleSubmit = (e) => {
+  const kirim = (e) => {
     e.preventDefault();
-    // Halaman contoh: data tidak dikirim ke mana pun (lihat pesan sukses).
-    setSubmitted(true);
+    const nama = new FormData(e.currentTarget).get('nama');
+    // Purwarupa desain: tidak ada data yang dikirim ke mana pun.
+    setTerkirim({ nama: String(nama).split(' ')[0], kursi: pilih });
   };
-
-  if (submitted) {
-    return (
-      <motion.div 
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        className="min-h-screen bg-stage-2 flex items-center justify-center p-4"
-      >
-        <div className="bg-stage-2 rounded-2xl shadow-xl p-12 text-center max-w-md w-full">
-          <CheckCircle2Icon className="w-24 h-24 text-spot mx-auto mb-6" />
-          <h2 className="text-3xl font-bold text-spot mb-4">
-            Terima kasih!
-          </h2>
-          <p className="text-spot-soft mb-6">
-            Ini halaman contoh, jadi pendaftaran Anda tidak diproses dan tidak ada
-            email yang dikirim.
-          </p>
-          <button 
-            onClick={() => setSubmitted(false)}
-            className="w-full bg-spot text-chalk py-3 rounded-full 
-                       hover:bg-spot transition-colors"
-          >
-            Kembali ke Formulir
-          </button>
-        </div>
-      </motion.div>
-    );
-  }
 
   return (
-    <section className="bg-stage-2 min-h-screen flex items-center justify-center py-16 px-4">
-      <motion.div 
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-        className="bg-stage-2 rounded-2xl shadow-xl w-full max-w-2xl p-10"
-      >
-        <div className="text-center mb-10">
-          <h2 className="text-4xl font-bold text-spot mb-4">
-            Daftar Webinar
+    <section id="daftar" className="scroll-mt-16 bg-stage-2 py-20 md:py-28">
+      <div className="mx-auto grid max-w-6xl gap-12 px-6 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)]">
+        <div>
+          <p className="cue mb-5 text-spot">Loket</p>
+          <h2 className="text-[2rem] leading-[1.08] font-extrabold md:text-[2.6rem]">
+            Pilih barisan, tulis pertanyaan Anda, selesai
           </h2>
-          <p className="text-spot-soft max-w-xl mx-auto">
-            Lengkapi formulir di bawah ini untuk bergabung dalam perjalanan 
-            transformasi digital Anda
+          <p className="mt-5 leading-relaxed">
+            Pertanyaan yang Anda tulis di sini dibaca pembicara sebelum hari-H. Tautan panggung
+            dikirim ke surel Anda sehari sebelum pertunjukan.
           </p>
+          <dl className="mt-8 space-y-3 border-t border-chalk/12 pt-6 text-sm">
+            <div className="flex justify-between gap-4"><dt>Hari</dt><dd className="text-chalk">{ACARA.hari}</dd></div>
+            <div className="flex justify-between gap-4"><dt>Pintu dibuka</dt><dd className="text-chalk">{ACARA.pintu}</dd></div>
+            <div className="flex justify-between gap-4"><dt>Tempat</dt><dd className="text-right text-chalk">{ACARA.tempat}</dd></div>
+          </dl>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="grid md:grid-cols-2 gap-6">
-            <div>
-              <label className="block text-spot mb-2">
-                Nama Lengkap
-              </label>
-              <div className="relative">
-                <UserIcon className="absolute left-3 top-1/2 -translate-y-1/2 text-spot" />
-                <input 
-                  type="text" 
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  placeholder="Masukkan nama Anda"
-                  className="text-black w-full pl-10 pr-4 py-3 rounded-full 
-                             border border-chalk/12 focus:border-spot 
-                             focus:ring focus:ring-orange-200"
-                />
+        <div className="border border-chalk/12 bg-stage p-6 sm:p-8">
+          {terkirim ? (
+            <div role="status" className="py-6">
+              <p className="cue text-spot">Kursi {terkirim.kursi.kode} · {terkirim.kursi.nama}</p>
+              <p className="mt-4 text-2xl font-extrabold text-chalk">
+                Terima kasih, {terkirim.nama || 'penonton'}.
+              </p>
+              <p className="mt-3 leading-relaxed">
+                Ini purwarupa desain, jadi tidak ada kursi yang benar-benar dipesan dan tidak ada
+                surel yang dikirim.
+              </p>
+              <button
+                type="button"
+                onClick={() => setTerkirim(null)}
+                className="cue mt-6 border border-chalk/25 px-5 py-3 text-chalk hover:border-spot hover:text-spot"
+              >
+                Isi ulang
+              </button>
+            </div>
+          ) : (
+            <form onSubmit={kirim} className="space-y-6">
+              <fieldset>
+                <legend className="cue mb-4 text-chalk">Barisan</legend>
+                <div className="grid gap-3 sm:grid-cols-3">
+                  {BARISAN.map((b) => (
+                    <label
+                      key={b.kode}
+                      className={`cursor-pointer border p-4 transition-colors ${
+                        kursi === b.kode ? 'border-spot bg-spot/10' : 'border-chalk/15 hover:border-chalk/40'
+                      }`}
+                    >
+                      <input
+                        type="radio"
+                        name="kursi"
+                        value={b.kode}
+                        checked={kursi === b.kode}
+                        onChange={() => setKursi(b.kode)}
+                        className="sr-only"
+                      />
+                      <span className="cue block text-spot">Barisan {b.kode}</span>
+                      <span className="mt-2 block font-extrabold text-chalk">{b.harga}</span>
+                      <span className="mt-1 block text-xs">{b.kursi} kursi</span>
+                    </label>
+                  ))}
+                </div>
+              </fieldset>
+
+              <div className="grid gap-5 sm:grid-cols-2">
+                <div>
+                  <label htmlFor="nama" className="cue mb-2 block text-chalk">Nama</label>
+                  <input id="nama" name="nama" required autoComplete="name"
+                    className="w-full border border-chalk/20 bg-stage-2 px-4 py-3 text-chalk focus:border-spot focus:outline-none" />
+                </div>
+                <div>
+                  <label htmlFor="surel" className="cue mb-2 block text-chalk">Surel</label>
+                  <input id="surel" name="surel" type="email" required autoComplete="email"
+                    className="w-full border border-chalk/20 bg-stage-2 px-4 py-3 text-chalk focus:border-spot focus:outline-none" />
+                </div>
               </div>
-            </div>
-
-            <div>
-              <label className="block text-spot mb-2">
-                Email
-              </label>
-              <div className="relative">
-                <MailIcon className="absolute left-3 top-1/2 -translate-y-1/2 text-spot" />
-                <input 
-                  type="email" 
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  placeholder="email@example.com"
-                  className="text-black w-full pl-10 pr-4 py-3 rounded-full 
-                             border border-chalk/12 focus:border-spot 
-                             focus:ring focus:ring-orange-200"
-                />
+              <div>
+                <label htmlFor="tanya" className="cue mb-2 block text-chalk">Pertanyaan yang ingin Anda bawa (boleh kosong)</label>
+                <textarea id="tanya" name="tanya" rows={3}
+                  className="w-full resize-y border border-chalk/20 bg-stage-2 px-4 py-3 text-chalk focus:border-spot focus:outline-none" />
               </div>
-            </div>
-          </div>
 
-          <div>
-            <label className="block text-spot mb-2">
-              Nomor Telepon
-            </label>
-            <div className="relative">
-              <PhoneIcon className="absolute left-3 top-1/2 -translate-y-1/2 text-spot" />
-              <input 
-                type="tel" 
-                name="phone"
-                value={formData.phone}
-                onChange={handleChange}
-                required
-                placeholder="Nomor telepon aktif"
-                className="text-black w-full pl-10 pr-4 py-3 rounded-full 
-                           border border-chalk/12 focus:border-spot 
-                           focus:ring focus:ring-orange-200"
-              />
-            </div>
-          </div>
-
-          <div>
-            <label className="block text-spot mb-2">
-              Kategori Peserta
-            </label>
-            <select 
-              name="category"
-              value={formData.category}
-              onChange={handleChange}
-              required
-              className="text-black w-full px-4 py-3 rounded-full 
-                         border border-chalk/12 focus:border-spot 
-                         focus:ring focus:ring-orange-200"
-            >
-              <option value="">Pilih Kategori</option>
-              <option value="pelajar">Pelajar</option>
-              <option value="mahasiswa">Mahasiswa</option>
-              <option value="profesional">Profesional</option>
-              <option value="wirausaha">Wirausaha</option>
-            </select>
-          </div>
-
-          <div>
-            <label className="block text-spot mb-2">
-              Minat Bidang
-            </label>
-            <div className="flex flex-wrap gap-3">
-              {interestOptions.map((interest) => (
-                <button
-                  type="button"
-                  key={interest}
-                  onClick={() => handleInterestToggle(interest)}
-                  className={`px-4 py-2 rounded-full text-sm transition-all 
-                              ${formData.interests.includes(interest)
-                                ? 'bg-spot text-stage'
-                                : 'bg-spot/12 text-spot'}`}
-                >
-                  {interest}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            type="submit"
-            className="w-full bg-spot text-chalk py-3 rounded-full 
-                       hover:bg-spot transition-all duration-300"
-          >
-            Daftar Sekarang
-          </motion.button>
-        </form>
-      </motion.div>
+              <button type="submit" className="w-full bg-spot py-4 text-sm font-bold text-stage transition-colors hover:bg-spot-soft">
+                Ambil kursi {pilih.kode} · {pilih.harga}
+              </button>
+              <p className="text-xs leading-relaxed">Purwarupa desain — formulir ini tidak mengirim data ke mana pun.</p>
+            </form>
+          )}
+        </div>
+      </div>
     </section>
   );
-};
-
-export default Registration;
+}
