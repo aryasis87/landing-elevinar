@@ -1,6 +1,6 @@
-# Elevinar — Naikkan Level Skill-mu
+# Elevinar — Presentasi yang Didengar
 
-Elevinar: tingkatkan wawasanmu melalui webinar interaktif dan inspiratif dari para ahli terbaik.
+Elevinar menjalankan webinar seperti pertunjukan. Pertunjukan #07 "Presentasi yang Didengar": empat babak, 300 kursi, Sabtu 21 November 2026, daring.
 
 **Demo live:** https://landing-elevinar.vercel.app
 
@@ -14,14 +14,16 @@ Bahasa rupa **Panggung**: webinar diperlakukan sebagai pertunjukan, dengan ruang
 
 ## Halaman
 
-`/`
+- `/` — Pertunjukan #07 "Presentasi yang Didengar": tiga babak, sorot pembicara, denah kursi, dan pendaftaran
+- `/buku-acara` — buku acara bergaya program teater, siap dicetak
+- `/pembicara/[slug]` — profil tiap pembicara beserta babak yang dibawakan
 
 ## Teknologi
 
 - Next.js 15.5 (App Router) dan React 19
 - Tailwind CSS v4
 - JavaScript
-- Heroicons, Framer Motion, Lucide (ikon)
+- Framer Motion (animasi hero)
 - Font: Archivo, Inter (next/font)
 - SEO: metadata per halaman, Open Graph, JSON-LD, sitemap.xml, dan robots.txt
 
